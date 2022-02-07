@@ -4,7 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 1130px;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  @media ${props => props.theme.mobile} {
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
 `;
 
 export const HeaderTitle = styled.h1`
@@ -36,4 +42,9 @@ export const Card = styled.div`
   margin: 7px;
   border: 1px solid gray;
   border-radius: 4px;
+
+  @media ${props => props.theme.mobile} {
+    margin: 0;
+    margin-bottom: 16px;
+  }
 `;

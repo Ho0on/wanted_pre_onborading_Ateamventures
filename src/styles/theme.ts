@@ -17,6 +17,8 @@ const theme = {
     normal: '500',
     bold: '700',
   },
+
+  mobile: '(max-width:500px)',
 };
 
 export default theme;
