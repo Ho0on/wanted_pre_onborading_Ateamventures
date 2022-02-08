@@ -13,7 +13,7 @@
 
 ## 2. 과제 구현 목록
 
-***1) server 열고 data 받아오기 ***
+***1) server 열고 data 받아오기***
 - json server 열고 data fetch 로직 구현
 
 ***2) 견적 요청 카드 배치 및 토글기능 구현***
