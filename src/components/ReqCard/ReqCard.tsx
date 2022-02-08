@@ -6,6 +6,7 @@ const ReqCard = ({ item }: { item: any }) => {
     <S.Container>
       <S.TopWrapper>
         <S.Title>{item.title}</S.Title>
+        {item.status === '상담중' && <S.Badge>상담중</S.Badge>}
         <S.Client>{item.client}</S.Client>
         <S.DueDate>{item.due} 까지 납기</S.DueDate>
       </S.TopWrapper>
