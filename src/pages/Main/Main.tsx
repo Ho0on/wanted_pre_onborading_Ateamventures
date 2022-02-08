@@ -7,8 +7,11 @@ import { MATERIAL, PROCESS_METHOD } from 'contants';
 import useFetch from 'hooks/useFetch';
 
 function Main() {
+  const [isMethodActive, setIsMethodActive] = useState(false);
+  const [isMethodOpen, setIsMethodOpen] = useState(false);
+  const [isMaterialActive, setisMaterialActive] = useState(false);
+  const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   const { data, error, isLoading } = useFetch('http://localhost:4000/requests');
 
@@ -16,8 +19,11 @@ function Main() {
     setIsToggled(!isToggled);
   };
 
-  const handleResetActive = () => {
-    setIsActive(false);
+  const handleReset = () => {
+    setIsMethodActive(false);
+    setisMaterialActive(false);
+    setIsMethodOpen(false);
+    setIsMaterialOpen(false);
   };
 
   return (
@@ -31,16 +37,20 @@ function Main() {
             <FilterContent
               title="가공 방식"
               filterData={PROCESS_METHOD}
-              isActive={isActive}
-              setIsActive={setIsActive}
+              isActive={isMethodActive}
+              setIsActive={setIsMethodActive}
+              isOpen={isMethodOpen}
+              setIsOpen={setIsMethodOpen}
             />
             <FilterContent
               title="재료"
               filterData={MATERIAL}
-              isActive={isActive}
-              setIsActive={setIsActive}
+              isActive={isMaterialActive}
+              setIsActive={setisMaterialActive}
+              isOpen={isMaterialOpen}
+              setIsOpen={setIsMaterialOpen}
             />
-            <S.ResetWrapper onClick={handleResetActive}>
+            <S.ResetWrapper onClick={handleReset}>
               <S.ResetIcon src="/images/refresh_icon.png" />
               <S.ResetText>필터링 리셋</S.ResetText>
             </S.ResetWrapper>

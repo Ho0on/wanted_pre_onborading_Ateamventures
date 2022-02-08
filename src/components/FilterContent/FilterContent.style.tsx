@@ -48,11 +48,16 @@ export const TitleNonActive = styled.div`
   line-height: 14.06px;
 `;
 
-export const ListWrapper = styled.ul`
+export const ListContainer = styled.div`
   position: relative;
+`;
+
+export const ListWrapper = styled.ul`
+  position: absolute;
   top: 4px;
   width: 100px;
   border: 1px solid #939fa5;
   border-radius: 4px;
+  background-color: white;
   z-index: 100;
 `;
