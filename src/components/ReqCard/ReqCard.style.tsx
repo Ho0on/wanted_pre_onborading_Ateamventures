@@ -9,6 +9,7 @@ export const Container = styled.div`
   margin: 9px;
   border: 1px solid ${props => props.theme.color.lightGray};
 `;
+
 export const TopWrapper = styled.div`
   position: relative;
   display: flex;
@@ -18,6 +19,7 @@ export const TopWrapper = styled.div`
   height: 35%;
   border-bottom: 1px solid ${props => props.theme.color.lightGray};
 `;
+
 export const Title = styled.h2`
   margin: 20px 0 10px 0;
   font-size: ${props => props.theme.fontSize.medium};
@@ -25,6 +27,7 @@ export const Title = styled.h2`
   box-sizing: border-box;
   color: #323d45;
 `;
+
 export const Badge = styled.span`
   position: absolute;
   top: 30px;
@@ -39,6 +42,7 @@ export const Badge = styled.span`
   border-radius: 20px;
   font-size: 13px;
 `;
+
 export const Client = styled.h4`
   margin-bottom: 25px;
   font-size: ${props => props.theme.fontSize.small};
@@ -46,17 +50,12 @@ export const Client = styled.h4`
   box-sizing: border-box;
   color: #323d45;
 `;
+
 export const DueDate = styled.h2`
   color: ${props => props.theme.color.gray};
   font-size: ${props => props.theme.fontSize.small};
   font-weight: ${props => props.theme.fontWeight.thin};
 `;
-
-// export const Badge = styled.span`
-//   width: 50px;
-//   height: 20px;
-//   background-color: 'tomato';
-// `;
 
 export const InfoContainer = styled.div`
   display: flex;
@@ -70,6 +69,7 @@ export const Type = styled.div``;
 export const Things = styled.div`
   margin-left: 45px;
 `;
+
 export const Work = styled.h2`
   color: #323d45;
   font-weight: ${props => props.theme.fontWeight.thin};

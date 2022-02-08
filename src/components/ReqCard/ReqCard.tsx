@@ -1,7 +1,9 @@
 import React from 'react';
+
+import { Request } from 'interface';
 import * as S from './ReqCard.style';
 
-const ReqCard = ({ item }: { item: any }) => {
+const ReqCard = ({ item }: { item: Request }) => {
   return (
     <S.Container>
       <S.TopWrapper>
