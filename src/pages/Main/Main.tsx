@@ -6,6 +6,21 @@ import ReqCard from 'components/ReqCard/ReqCard';
 import { MATERIAL, PROCESS_METHOD } from 'contants';
 import useFetch from 'hooks/useFetch';
 
+interface Root {
+  requests: Request[];
+}
+
+interface Request {
+  id: number;
+  title: string;
+  client: string;
+  due: string;
+  count: number;
+  amount: number;
+  method: string[];
+  material: string[];
+  status: string;
+}
 function Main() {
   const [isMethodActive, setIsMethodActive] = useState(false);
   const [isMethodOpen, setIsMethodOpen] = useState(false);
@@ -13,7 +28,8 @@ function Main() {
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
 
-  const { data, error, isLoading } = useFetch('http://localhost:4000/requests');
+  const { data, error, isLoading }: { data: any; error: any; isLoading: any } =
+    useFetch('http://localhost:4000/requests');
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
@@ -67,15 +83,19 @@ function Main() {
             <S.ToggleText>상담 중인 요청만 보기</S.ToggleText>
           </S.ToggleWrapper>
         </S.FilteringContainer>
-        <S.ReqWrapper>
-          {!data ? (
-            <S.Span>조건에 맞는 견적 요청이 없습니다.</S.Span>
-          ) : (
-            <S.CardContainer>
-              <ReqCard />
-            </S.CardContainer>
-          )}
-        </S.ReqWrapper>
+        {data && (
+          <S.ReqWrapper>
+            {!data ? (
+              <S.Span>조건에 맞는 견적 요청이 없습니다.</S.Span>
+            ) : (
+              <S.CardContainer>
+                {data.map((el: any) => {
+                  return <ReqCard item={el} />;
+                })}
+              </S.CardContainer>
+            )}
+          </S.ReqWrapper>
+        )}
       </S.Container>
     </>
   );

@@ -144,6 +144,7 @@ export const ReqWrapper = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 `;
 export const Card = styled.div`
