@@ -1,27 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
 import Nav from 'components/Nav/Nav';
-import * as S from './Main.style';
-import FilterContent from 'components/FilterContent/FilterContent';
 import ReqCard from 'components/ReqCard/ReqCard';
+import FilterContent from 'components/FilterContent/FilterContent';
 import { MATERIAL, PROCESS_METHOD } from 'contants';
+import { Request } from 'interface';
 import useFetch from 'hooks/useFetch';
-
-interface Root {
-  requests: Request[];
-}
-
-interface Request {
-  id: number;
-  title: string;
-  client: string;
-  due: string;
-  count: number;
-  amount: number;
-  method: string[];
-  material: string[];
-  status: string;
-  both?: string[];
-}
+import * as S from './Main.style';
 
 const Main: React.FC = () => {
   const [isMethodOpen, setIsMethodOpen] = useState(false);
@@ -54,10 +39,10 @@ const Main: React.FC = () => {
   const checkedBothArray = [...checkedMaterial, ...checkedMethod];
 
   const filteringData = () => {
-    const dataWithBothFitler = data?.filter(
+    const dataWithBothFilter = data?.filter(
       (el: Request) => (el.both = [...el.method, ...el.material])
     );
-    const result = dataWithBothFitler.filter((el: any) =>
+    const result = dataWithBothFilter.filter((el: any) =>
       checkedBothArray.every((element: any) => el.both.includes(element))
     );
     setFilteredData(result);
@@ -93,8 +78,6 @@ const Main: React.FC = () => {
             <FilterContent
               title="가공 방식"
               filterData={PROCESS_METHOD}
-              // isActive={isMethodActive}
-              // setIsActive={setIsMethodActive}
               isOpen={isMethodOpen}
               setIsOpen={setIsMethodOpen}
               checkedArray={checkedMethod}
@@ -103,8 +86,6 @@ const Main: React.FC = () => {
             <FilterContent
               title="재료"
               filterData={MATERIAL}
-              // isActive={isMaterialActive}
-              // setIsActive={setisMaterialActive}
               isOpen={isMaterialOpen}
               setIsOpen={setIsMaterialOpen}
               checkedArray={checkedMaterial}
