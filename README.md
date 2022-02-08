@@ -1,4 +1,4 @@
-# 🚀 Wanted_Pre_onboarding Assignment from [Ateamventures]
+# Wanted_Pre_onboarding Assignment from [Ateamventures]
 
 ## 3조 삼전십만가조
 
@@ -7,7 +7,9 @@
 - [이나은](https://github.com/cotton-cotton)
 - [홍정빈](https://github.com/tohjbin2)
 
-## 🔗 배포 주소
+## 🚀 배포 주소
+
+[🔗 데모 링크](https://pre-onboarding-ateamventures.herokuapp.com/)
 
 ## 🖥 구현 영상
 
