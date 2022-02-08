@@ -22,39 +22,55 @@ export const Title = styled.h2`
   font-size: ${props => props.theme.fontSize.medium};
   font-weight: ${props => props.theme.fontWeight.bold};
   box-sizing: border-box;
+  color: #323d45;
 `;
 export const Client = styled.h4`
   margin-bottom: 25px;
   font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.normal};
   box-sizing: border-box;
+  color: #323d45;
 `;
 export const DueDate = styled.h2`
   color: ${props => props.theme.color.gray};
   font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.thin};
 `;
+
 // export const Badge = styled.span`
 //   width: 50px;
 //   height: 20px;
 //   background-color: 'tomato';
 // `;
+
 export const InfoContainer = styled.div`
   display: flex;
   width: 90%;
   margin-top: 30px;
   line-height: 30px;
 `;
+
 export const Type = styled.div``;
+
 export const Things = styled.div`
   margin-left: 45px;
+`;
+export const Work = styled.h2`
+  color: #323d45;
+  font-weight: ${props => props.theme.fontWeight.thin};
+`;
+
+export const Info = styled.h2`
+  color: #323d45;
   font-weight: ${props => props.theme.fontWeight.bold};
 `;
-export const Work = styled.h2``;
-export const Info = styled.h2``;
+
 export const ButtonContainer = styled.div`
   display: flex;
   width: 90%;
   margin-top: 20px;
 `;
+
 export const List = styled.button`
   width: 108px;
   height: 32px;
@@ -63,6 +79,7 @@ export const List = styled.button`
   border: none;
   border-radius: 5px;
 `;
+
 export const Chat = styled.button`
   width: 82px;
   height: 32px;
