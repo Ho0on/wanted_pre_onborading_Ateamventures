@@ -132,7 +132,11 @@ export const ReqWrapper = styled.div`
   color: ${props => props.theme.color.gray};
   box-sizing: border-box;
 `;
-
+export const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
 export const Card = styled.div`
   width: 360px;
   height: 356px;
@@ -145,3 +149,5 @@ export const Card = styled.div`
     margin-bottom: 16px;
   }
 `;
+
+export const Span = styled.span``;
