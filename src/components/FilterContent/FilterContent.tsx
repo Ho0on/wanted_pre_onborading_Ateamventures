@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import * as S from './FilterContent.style';
 
-function FilterContent({
-  title,
-  filterData,
-  isOpen,
-  setIsOpen,
-  checkedArray,
-  setCheckedArray,
-}: {
+interface FilterContentProps {
   title: string;
   filterData: string[];
   isOpen: boolean;
   setIsOpen: any;
   checkedArray: string[];
   setCheckedArray: any;
-}): JSX.Element {
+}
+
+const FilterContent: React.FC<FilterContentProps> = ({
+  title,
+  filterData,
+  isOpen,
+  setIsOpen,
+  checkedArray,
+  setCheckedArray,
+}) => {
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -49,7 +51,7 @@ function FilterContent({
       {isOpen && (
         <S.ListContainer>
           <S.ListWrapper>
-            {filterData.map((el: any, idx: number): any => (
+            {filterData.map((el: string, idx: number): any => (
               <S.FilterListContainer key={idx}>
                 <S.FilterItem>
                   <S.CheckboxList
@@ -66,6 +68,6 @@ function FilterContent({
       )}
     </S.FilterContentContainer>
   );
-}
+};
 
 export default FilterContent;
