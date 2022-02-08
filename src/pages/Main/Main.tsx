@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Nav from 'components/Nav/Nav';
 import * as S from './Main.style';
 import FilterContent from 'components/FilterContent/FilterContent';
+import ReqCard from 'components/ReqCard/ReqCard';
 import { MATERIAL, PROCESS_METHOD } from 'contants';
 
 function Main() {
@@ -53,7 +54,10 @@ function Main() {
             <S.ToggleText>상담 중인 요청만 보기</S.ToggleText>
           </S.ToggleWrapper>
         </S.FilteringContainer>
-        <S.ReqWrapper>조건에 맞는 견적 요청이 없습니다.</S.ReqWrapper>
+        {/* <S.ReqWrapper>조건에 맞는 견적 요청이 없습니다.</S.ReqWrapper> */}
+        <S.CardContainer>
+          <ReqCard />
+        </S.CardContainer>
       </S.Container>
     </>
   );
