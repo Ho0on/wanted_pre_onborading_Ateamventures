@@ -4,8 +4,6 @@ import * as S from './FilterContent.style';
 function FilterContent({
   title,
   filterData,
-  isActive,
-  setIsActive,
   isOpen,
   setIsOpen,
   checkedArray,
@@ -13,8 +11,6 @@ function FilterContent({
 }: {
   title: string;
   filterData: string[];
-  isActive: boolean;
-  setIsActive: any;
   isOpen: boolean;
   setIsOpen: any;
   checkedArray: string[];
@@ -24,11 +20,6 @@ function FilterContent({
     setIsOpen(!isOpen);
   };
 
-  // FIXME
-  // map 함수의 대상이 되는 부분을 컴포넌트로 빼서 state 또한 그 갯수만큼 분리하는 것이 아니라
-  // filter 함수를 써서 생각하는 부분으로...
-  // 이렇게 하면 아마도 로직 거의다 구현될 듯...
-
   const onCheckedElement = (checked: boolean, item: string) => {
     const newCheckList = checked
       ? [...checkedArray, item]
@@ -36,16 +27,12 @@ function FilterContent({
     setCheckedArray(newCheckList);
   };
 
-  const isActiveActive = checkedArray.length >= 1;
+  const isActive = checkedArray.length >= 1;
 
   return (
     <S.FilterContentContainer title={title}>
-      <S.TitleWrapper
-        onClick={handleOpen}
-        title={title}
-        isActive={isActiveActive}
-      >
-        {!isActiveActive ? (
+      <S.TitleWrapper onClick={handleOpen} title={title} isActive={isActive}>
+        {!isActive ? (
           <>
             <S.TitleNonActive>{title}</S.TitleNonActive>
             <S.IconDown src="/images/triangle_down_gray.png" />

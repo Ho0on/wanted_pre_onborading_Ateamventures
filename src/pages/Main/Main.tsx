@@ -20,11 +20,11 @@ interface Request {
   method: string[];
   material: string[];
   status: string;
+  both?: string[];
 }
-function Main() {
-  const [isMethodActive, setIsMethodActive] = useState(false);
+
+const Main: React.FC = () => {
   const [isMethodOpen, setIsMethodOpen] = useState(false);
-  const [isMaterialActive, setisMaterialActive] = useState(false);
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
   const [checkedMaterial, setCheckedMaterial] = useState([]);
@@ -35,33 +35,46 @@ function Main() {
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
-  };
-
-  const handleReset = () => {
-    setIsMethodActive(false);
-    setisMaterialActive(false);
     setIsMethodOpen(false);
     setIsMaterialOpen(false);
     setCheckedMaterial([]);
     setCheckedMethod([]);
+    setFilteredData([]);
+  };
+
+  const handleReset = () => {
+    setIsMethodOpen(false);
+    setIsMaterialOpen(false);
+    setCheckedMaterial([]);
+    setCheckedMethod([]);
+    setFilteredData([]);
+    setIsToggled(false);
   };
 
   const checkedBothArray = [...checkedMaterial, ...checkedMethod];
 
   const filteringData = () => {
-    const newData = data?.filter(
-      (el: any) => (el.both = [...el.method, ...el.material])
+    const dataWithBothFitler = data?.filter(
+      (el: Request) => (el.both = [...el.method, ...el.material])
     );
-    const newData2 = newData.filter((el: any) =>
+    const result = dataWithBothFitler.filter((el: any) =>
       checkedBothArray.every((element: any) => el.both.includes(element))
     );
+    setFilteredData(result);
+  };
 
-    setFilteredData(newData2);
+  const showIngData = () => {
+    const result = data?.filter((el: Request) => el.status === '상담중');
+    setFilteredData(result);
   };
 
   useEffect(() => {
+    isToggled ? showIngData() : setFilteredData([]);
     if (checkedBothArray.length > 0) {
       filteringData();
+    }
+    if (checkedBothArray.length > 0) {
+      setIsToggled(false);
     }
   }, [checkedMaterial, checkedMethod]);
 
@@ -80,8 +93,8 @@ function Main() {
             <FilterContent
               title="가공 방식"
               filterData={PROCESS_METHOD}
-              isActive={isMethodActive}
-              setIsActive={setIsMethodActive}
+              // isActive={isMethodActive}
+              // setIsActive={setIsMethodActive}
               isOpen={isMethodOpen}
               setIsOpen={setIsMethodOpen}
               checkedArray={checkedMethod}
@@ -90,8 +103,8 @@ function Main() {
             <FilterContent
               title="재료"
               filterData={MATERIAL}
-              isActive={isMaterialActive}
-              setIsActive={setisMaterialActive}
+              // isActive={isMaterialActive}
+              // setIsActive={setisMaterialActive}
               isOpen={isMaterialOpen}
               setIsOpen={setIsMaterialOpen}
               checkedArray={checkedMaterial}
@@ -115,16 +128,16 @@ function Main() {
           </S.ToggleWrapper>
         </S.FilteringContainer>
         {data && (
-          <S.ReqWrapper>
+          <S.ReqWrapper isActive={condition}>
             {condition ? (
               <S.Span>조건에 맞는 견적 요청이 없습니다.</S.Span>
             ) : (
               <S.CardContainer>
-                {checkedBothArray.length === 0
-                  ? data.map((el: any) => {
+                {filteredData.length === 0
+                  ? data.map((el: Request) => {
                       return <ReqCard key={el.id} item={el} />;
                     })
-                  : filteredData.map((el: any) => {
+                  : filteredData.map((el: Request) => {
                       return <ReqCard key={el.id} item={el} />;
                     })}
               </S.CardContainer>
@@ -134,6 +147,6 @@ function Main() {
       </S.Container>
     </>
   );
-}
+};
 
 export default Main;
