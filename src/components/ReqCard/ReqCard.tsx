@@ -1,5 +1,4 @@
 import React from 'react';
-import { isTaggedTemplateExpression } from 'typescript';
 import * as S from './ReqCard.style';
 
 const ReqCard = ({ item }: { item: any }) => {
