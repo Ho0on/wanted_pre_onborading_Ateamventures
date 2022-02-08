@@ -27,6 +27,8 @@ function Main() {
   const [isMaterialActive, setisMaterialActive] = useState(false);
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
+  const [checkedMaterial, setCheckedMaterial] = useState([]);
+  const [checkedMethod, setCheckedMethod] = useState([]);
 
   const { data, error, isLoading }: { data: any; error: any; isLoading: any } =
     useFetch('http://localhost:4000/requests');
@@ -40,6 +42,8 @@ function Main() {
     setisMaterialActive(false);
     setIsMethodOpen(false);
     setIsMaterialOpen(false);
+    setCheckedMaterial([]);
+    setCheckedMethod([]);
   };
 
   return (
@@ -57,6 +61,8 @@ function Main() {
               setIsActive={setIsMethodActive}
               isOpen={isMethodOpen}
               setIsOpen={setIsMethodOpen}
+              checkedArray={checkedMethod}
+              setCheckedArray={setCheckedMethod}
             />
             <FilterContent
               title="재료"
@@ -65,6 +71,8 @@ function Main() {
               setIsActive={setisMaterialActive}
               isOpen={isMaterialOpen}
               setIsOpen={setIsMaterialOpen}
+              checkedArray={checkedMaterial}
+              setCheckedArray={setCheckedMaterial}
             />
             <S.ResetWrapper onClick={handleReset}>
               <S.ResetIcon src="/images/refresh_icon.png" />
