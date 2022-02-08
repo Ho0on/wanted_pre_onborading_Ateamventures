@@ -4,6 +4,11 @@ export const FilteringContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 32px;
+
+  @media ${props => props.theme.mobile} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const FilteringBoxWrapper = styled.div`
@@ -39,6 +44,10 @@ export const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
+
+  @media ${props => props.theme.mobile} {
+    margin-top: 20px;
+  }
 `;
 
 export const InputWrapper = styled.label`
@@ -132,7 +141,11 @@ export const ReqWrapper = styled.div`
   color: ${props => props.theme.color.gray};
   box-sizing: border-box;
 `;
-
+export const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
 export const Card = styled.div`
   width: 360px;
   height: 356px;
