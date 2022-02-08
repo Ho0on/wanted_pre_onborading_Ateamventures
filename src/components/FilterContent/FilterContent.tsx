@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as S from './FilterContent.style';
-import FilterList from 'components/FilterList/FilterList';
 
 function FilterContent({
   title,
@@ -9,6 +8,8 @@ function FilterContent({
   setIsActive,
   isOpen,
   setIsOpen,
+  checkedArray,
+  setCheckedArray,
 }: {
   title: string;
   filterData: string[];
@@ -16,31 +17,44 @@ function FilterContent({
   setIsActive: any;
   isOpen: boolean;
   setIsOpen: any;
+  checkedArray: string[];
+  setCheckedArray: any;
 }): JSX.Element {
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  // const handleActive = () => {
-  //   setIsActive(!isActive);
-  // };
 
   // FIXME
   // map 함수의 대상이 되는 부분을 컴포넌트로 빼서 state 또한 그 갯수만큼 분리하는 것이 아니라
   // filter 함수를 써서 생각하는 부분으로...
   // 이렇게 하면 아마도 로직 거의다 구현될 듯...
 
+  const onCheckedElement = (checked: boolean, item: string) => {
+    const newCheckList = checked
+      ? [...checkedArray, item]
+      : checkedArray.filter(el => el !== item);
+    setCheckedArray(newCheckList);
+  };
+
+  const isActiveActive = checkedArray.length >= 1;
+
   return (
     <S.FilterContentContainer title={title}>
-      <S.TitleWrapper onClick={handleOpen} title={title} isActive={isActive}>
-        {!isActive ? (
+      <S.TitleWrapper
+        onClick={handleOpen}
+        title={title}
+        isActive={isActiveActive}
+      >
+        {!isActiveActive ? (
           <>
             <S.TitleNonActive>{title}</S.TitleNonActive>
             <S.IconDown src="/images/triangle_down_gray.png" />
           </>
         ) : (
           <>
-            <S.TitleActive>{title}(1)</S.TitleActive>
+            <S.TitleActive>
+              {title}({checkedArray.length})
+            </S.TitleActive>
             <S.IconDown src="/images/triangle_down_white.png" />
           </>
         )}
@@ -48,13 +62,17 @@ function FilterContent({
       {isOpen && (
         <S.ListContainer>
           <S.ListWrapper>
-            {filterData.map((el: any, idx: any): any => (
-              <FilterList
-                key={idx}
-                filterData={el}
-                isActive={isActive}
-                setIsActive={setIsActive}
-              />
+            {filterData.map((el: any, idx: number): any => (
+              <S.FilterListContainer key={idx}>
+                <S.FilterItem>
+                  <S.CheckboxList
+                    type="checkbox"
+                    checked={checkedArray.includes(el) ? true : false}
+                    onChange={e => onCheckedElement(e.target.checked, el)}
+                  />
+                  <S.ListItem>{el}</S.ListItem>
+                </S.FilterItem>
+              </S.FilterListContainer>
             ))}
           </S.ListWrapper>
         </S.ListContainer>

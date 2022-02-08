@@ -10,6 +10,7 @@ export const Container = styled.div`
   border: 1px solid ${props => props.theme.color.lightGray};
 `;
 export const TopWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +24,20 @@ export const Title = styled.h2`
   font-weight: ${props => props.theme.fontWeight.bold};
   box-sizing: border-box;
   color: #323d45;
+`;
+export const Badge = styled.span`
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 20px;
+  color: #ffbe50;
+  border: 2px solid #ffbe50;
+  border-radius: 20px;
+  font-size: 13px;
 `;
 export const Client = styled.h4`
   margin-bottom: 25px;

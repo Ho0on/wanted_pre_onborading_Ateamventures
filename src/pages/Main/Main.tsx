@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from 'components/Nav/Nav';
 import * as S from './Main.style';
 import FilterContent from 'components/FilterContent/FilterContent';
@@ -27,9 +27,11 @@ function Main() {
   const [isMaterialActive, setisMaterialActive] = useState(false);
   const [isMaterialOpen, setIsMaterialOpen] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
+  const [checkedMaterial, setCheckedMaterial] = useState([]);
+  const [checkedMethod, setCheckedMethod] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  const { data, error, isLoading }: { data: any; error: any; isLoading: any } =
-    useFetch('http://localhost:4000/requests');
+  const { data }: { data: any } = useFetch('http://localhost:4000/requests');
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
@@ -40,7 +42,32 @@ function Main() {
     setisMaterialActive(false);
     setIsMethodOpen(false);
     setIsMaterialOpen(false);
+    setCheckedMaterial([]);
+    setCheckedMethod([]);
   };
+
+  const checkedBothArray = [...checkedMaterial, ...checkedMethod];
+
+  const filteringData = () => {
+    const newData = data?.filter(
+      (el: any) => (el.both = [...el.method, ...el.material])
+    );
+    const newData2 = newData.filter((el: any) =>
+      checkedBothArray.every((element: any) => el.both.includes(element))
+    );
+
+    setFilteredData(newData2);
+  };
+
+  useEffect(() => {
+    if (checkedBothArray.length > 0) {
+      filteringData();
+    }
+  }, [checkedMaterial, checkedMethod]);
+
+  const condition =
+    filteredData.length === 0 &&
+    (checkedMaterial.length > 0 || checkedMethod.length > 0);
 
   return (
     <>
@@ -57,6 +84,8 @@ function Main() {
               setIsActive={setIsMethodActive}
               isOpen={isMethodOpen}
               setIsOpen={setIsMethodOpen}
+              checkedArray={checkedMethod}
+              setCheckedArray={setCheckedMethod}
             />
             <FilterContent
               title="재료"
@@ -65,6 +94,8 @@ function Main() {
               setIsActive={setisMaterialActive}
               isOpen={isMaterialOpen}
               setIsOpen={setIsMaterialOpen}
+              checkedArray={checkedMaterial}
+              setCheckedArray={setCheckedMaterial}
             />
             <S.ResetWrapper onClick={handleReset}>
               <S.ResetIcon src="/images/refresh_icon.png" />
@@ -85,13 +116,17 @@ function Main() {
         </S.FilteringContainer>
         {data && (
           <S.ReqWrapper>
-            {!data ? (
+            {condition ? (
               <S.Span>조건에 맞는 견적 요청이 없습니다.</S.Span>
             ) : (
               <S.CardContainer>
-                {data.map((el: any) => {
-                  return <ReqCard item={el} />;
-                })}
+                {checkedBothArray.length === 0
+                  ? data.map((el: any) => {
+                      return <ReqCard key={el.id} item={el} />;
+                    })
+                  : filteredData.map((el: any) => {
+                      return <ReqCard key={el.id} item={el} />;
+                    })}
               </S.CardContainer>
             )}
           </S.ReqWrapper>

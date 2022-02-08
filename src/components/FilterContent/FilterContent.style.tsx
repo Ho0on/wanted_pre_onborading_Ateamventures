@@ -15,7 +15,7 @@ export const TitleWrapper = styled.div<TitleWrapperType>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: ${({ title }) => (title === '재료' ? '76px' : '98px')};
+  width: ${({ title }) => (title === '재료' ? '76px' : '110px')};
   /* width: 98px; */
   height: 32px;
   padding: 4px 12px;
@@ -60,4 +60,20 @@ export const ListWrapper = styled.ul`
   border-radius: 4px;
   background-color: white;
   z-index: 100;
+`;
+
+export const FilterListContainer = styled.li``;
+
+export const FilterItem = styled.label`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export const CheckboxList = styled.input``;
+
+export const ListItem = styled.div`
+  padding: 2px 0 0 2px;
+  font-size: 14px;
+  line-height: 20px;
 `;
