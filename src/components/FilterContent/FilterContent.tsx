@@ -7,14 +7,16 @@ function FilterContent({
   filterData,
   isActive,
   setIsActive,
+  isOpen,
+  setIsOpen,
 }: {
   title: string;
   filterData: string[];
   isActive: boolean;
   setIsActive: any;
+  isOpen: boolean;
+  setIsOpen: any;
 }): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false);
-
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -44,16 +46,18 @@ function FilterContent({
         )}
       </S.TitleWrapper>
       {isOpen && (
-        <S.ListWrapper>
-          {filterData.map((el: any, idx: any): any => (
-            <FilterList
-              key={idx}
-              filterData={el}
-              isActive={isActive}
-              setIsActive={setIsActive}
-            />
-          ))}
-        </S.ListWrapper>
+        <S.ListContainer>
+          <S.ListWrapper>
+            {filterData.map((el: any, idx: any): any => (
+              <FilterList
+                key={idx}
+                filterData={el}
+                isActive={isActive}
+                setIsActive={setIsActive}
+              />
+            ))}
+          </S.ListWrapper>
+        </S.ListContainer>
       )}
     </S.FilterContentContainer>
   );
