@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import * as S from './FilterList.style';
 
 function FilterList({ filterData, isActive, setIsActive }: any) {
   const [isSelected, setIsSelected] = useState(false);
@@ -10,33 +10,17 @@ function FilterList({ filterData, isActive, setIsActive }: any) {
   };
 
   return (
-    <FilterListContainer>
-      <FilterItem>
-        <CheckboxList
+    <S.FilterListContainer>
+      <S.FilterItem>
+        <S.CheckboxList
           type="checkbox"
           checked={isSelected}
           onChange={handleSelect}
         />
-        <ListItem>{filterData}</ListItem>
-      </FilterItem>
-    </FilterListContainer>
+        <S.ListItem>{filterData}</S.ListItem>
+      </S.FilterItem>
+    </S.FilterListContainer>
   );
 }
-
-const FilterListContainer = styled.li``;
-
-const FilterItem = styled.label`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-const CheckboxList = styled.input``;
-
-const ListItem = styled.div`
-  padding: 2px 0 0 2px;
-  font-size: 14px;
-  line-height: 20px;
-`;
 
 export default FilterList;
