@@ -158,3 +158,5 @@ export const Card = styled.div`
     margin-bottom: 16px;
   }
 `;
+
+export const Span = styled.span``;
