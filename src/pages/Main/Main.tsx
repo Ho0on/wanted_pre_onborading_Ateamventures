@@ -16,7 +16,9 @@ const Main: React.FC = () => {
   const [checkedMethod, setCheckedMethod] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  const { data }: { data: any } = useFetch('http://localhost:4000/requests');
+  const { data }: { data: any } = useFetch(
+    'https://pre-onboarding-ateamventures.herokuapp.com/requests'
+  );
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
