@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ReqWrapperType {
+  isActive: boolean;
+}
+
 export const FilteringContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -130,13 +134,14 @@ export const HeaderDesc = styled.h3`
   margin-bottom: 32px;
 `;
 
-export const ReqWrapper = styled.div`
+export const ReqWrapper = styled.div<ReqWrapperType>`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 40px 0px;
   width: 100%;
-  border: 1px solid ${props => props.theme.color.gray};
+  border: 1px solid
+    ${props => (!props.isActive ? 'white' : props.theme.color.gray)};
   border-radius: 4px;
   color: ${props => props.theme.color.gray};
   box-sizing: border-box;
@@ -144,7 +149,7 @@ export const ReqWrapper = styled.div`
 export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
 `;
 export const Card = styled.div`
