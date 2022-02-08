@@ -15,8 +15,8 @@ export const TitleWrapper = styled.div<TitleWrapperType>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: ${({ title }) => (title === '재료' ? '76px' : '98px')}; */
-  width: 98px;
+  width: ${({ title }) => (title === '재료' ? '76px' : '98px')};
+  /* width: 98px; */
   height: 32px;
   padding: 4px 12px;
   border: ${({ isActive }) =>
