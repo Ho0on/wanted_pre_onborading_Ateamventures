@@ -9,6 +9,7 @@ export const NavContainer = styled.div`
   padding: 25px 40px;
   background-color: ${props => props.theme.color.blue};
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+  z-index: 1000;
 
   @media ${props => props.theme.mobile} {
     justify-content: flex-start;
@@ -77,7 +78,7 @@ export const SideMenu = styled.div<{ active: boolean }>`
   width: 280px;
   height: 100%;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-  z-index: 10;
+  z-index: 2000;
   transform: ${props => (props.active ? 'translateX(280px)' : null)};
   transition: all 0.4s ease-in-out;
 `;

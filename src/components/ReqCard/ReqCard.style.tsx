@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  width: 100%;
-`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 366px;
+  width: 355px;
   height: 356px;
+  margin: 9px;
   border: 1px solid ${props => props.theme.color.lightGray};
 `;
 export const TopWrapper = styled.div`
@@ -34,6 +32,11 @@ export const DueDate = styled.h2`
   color: ${props => props.theme.color.gray};
   font-size: ${props => props.theme.fontSize.small};
 `;
+// export const Badge = styled.span`
+//   width: 50px;
+//   height: 20px;
+//   background-color: 'tomato';
+// `;
 export const InfoContainer = styled.div`
   display: flex;
   width: 90%;
