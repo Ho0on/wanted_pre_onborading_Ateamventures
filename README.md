@@ -1,4 +1,4 @@
-# Wanted_Pre_onboarding Assignment from [Ateamventures]
+# 🚀 Wanted_Pre_onboarding Assignment from [Ateamventures]
 
 ## 3조 삼전십만가조
 
@@ -7,9 +7,21 @@
 - [이나은](https://github.com/cotton-cotton)
 - [홍정빈](https://github.com/tohjbin2)
 
-## 1. 배포 주소
+## 🔗 배포 주소
 
-## 2. 과제 구현 목록
+## 🖥 구현 영상
+
+***전체 필터링***
+
+![111](https://user-images.githubusercontent.com/88081661/153037525-d5239909-f0ca-45c6-b870-140d51dd8465.gif)
+
+<br>
+
+***모바일 반응형 사이드메뉴***
+
+![2222](https://user-images.githubusercontent.com/88081661/153036947-1dc0fad4-3a24-474d-a436-4baa0c9f3451.gif)
+
+## ✅ 과제 구현 목록
 
 **_1) server 열고 data 받아오기_**
 
@@ -29,16 +41,17 @@
 - 필터링 리셋 클릭 시 견적 요청 카드 초기화 되어 출력
 
 ✨ 필터링 로직 설명 ✨
+
 선택한 가공방식과 재료를 하나의 배열로 묶어서 요청 데이터의 가공방식, 재료와 비교하여 완전 포함된 것만 필터링 되도록 구현
 
 **_4) 모바일 반응형_**
 
 - 500px 이하 모바일 반응형 디자인 구현
-- 사이드 메뉴 애니메이션 구현
+- 사이드 메뉴 애니메이션 구현�
 
   <br>
 
-## 3. 설치 및 시작하는 법
+## 💻 설치 및 시작하는 법
 
 1. 파일 클론 받기
 
