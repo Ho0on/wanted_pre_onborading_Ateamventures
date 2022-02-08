@@ -29,7 +29,7 @@ function Main() {
   const [isToggled, setIsToggled] = useState(false);
 
   const { data, error, isLoading }: { data: any; error: any; isLoading: any } =
-    useFetch('http://localhost:4000/requests');
+    useFetch('http://localhost:3001/');
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
