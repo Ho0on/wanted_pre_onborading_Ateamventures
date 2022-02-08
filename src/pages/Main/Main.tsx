@@ -48,7 +48,6 @@ function Main() {
       <S.Container>
         <S.HeaderTitle>들어온 요청</S.HeaderTitle>
         <S.HeaderDesc>파트너님에게 딱 맞는 요청서를 찾아보세요.</S.HeaderDesc>
-        테스트 <-추후 삭제 예정. push가 반영에 따라 업데이트 유무 확인차 입력
         <S.FilteringContainer>
           <S.FilteringBoxWrapper>
             <FilterContent
